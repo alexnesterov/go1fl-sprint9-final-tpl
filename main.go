@@ -15,13 +15,13 @@ const (
 // generateRandomElements generates random elements.
 func generateRandomElements(size int) []int {
 	if size <= 0 {
-		return []int{}
+		return nil
 	}
 
 	nums := make([]int, size)
 
 	for i := range size {
-		nums[i] = rand.Intn(size)
+		nums[i] = rand.Int()
 	}
 
 	return nums
@@ -67,8 +67,7 @@ func maxChunks(data []int) int {
 		go func() {
 			defer wg.Done()
 
-			maxNum := maximum(data[start:end])
-			maxFromChunks[i] = maxNum
+			maxFromChunks[i] = maximum(data[start:end])
 		}()
 	}
 
